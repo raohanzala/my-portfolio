@@ -1,7 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import Button from './Button';
+import SectionTitle from './SectionTitle';
 import { FiArrowRight, FiCode, FiLayers, FiZap } from 'react-icons/fi';
 import {
   SiJavascript,
@@ -51,16 +53,15 @@ export default function AboutSummary() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="max-w-3xl mx-auto text-center"
+          className="max-w-3xl mx-auto"
         >
-          <p className="text-[var(--secondary)] text-sm font-semibold uppercase tracking-widest mb-3">
-            About Me
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-5">
-            I turn ideas into{' '}
-            <span className="text-[var(--secondary)]">clean, scalable web apps</span>
-          </h2>
-          <p className="text-[var(--subtext)] text-lg leading-relaxed mb-8">
+          <SectionTitle
+            label="About Me"
+            title="I turn ideas into"
+            highlight="clean, scalable web apps"
+            className="!mb-6"
+          />
+          <p className="text-[var(--subtext)] text-lg leading-relaxed mb-8 text-center">
             I&apos;m a MERN-stack developer from Pakistan who builds responsive products
             for e-commerce, ed-tech, and business platforms — from polished front-ends
             to reliable back-end APIs.
@@ -70,44 +71,67 @@ export default function AboutSummary() {
             {highlights.map(({ icon: Icon, label }) => (
               <span
                 key={label}
-                className="inline-flex items-center gap-2 rounded-full border border-[var(--accent)] bg-white px-4 py-2 text-sm font-medium text-[var(--text)] shadow-sm"
+                className="inline-flex items-center gap-2 rounded-full  border-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--text)]"
               >
-                <Icon className="text-[var(--secondary)]" />
+                {/* <Icon className="text-[var(--secondary)]" /> */}
                 {label}
               </span>
             ))}
           </div>
 
-          <Button href="/about" variant="primary" size="md" as="link">
-            More About Me <FiArrowRight className="ml-1" />
-          </Button>
+          <div className="flex justify-center">
+            <Button href="/about" variant="primary" size="md" as="link">
+              More About Me <FiArrowRight className="ml-1" />
+            </Button>
+          </div>
         </motion.div>
 
         {/* Tech stack */}
         <motion.div
-          className="mt-20 rounded-2xl border border-[var(--accent)] bg-white/80 p-8 md:p-10 shadow-sm"
+          className="mt-20 pt-16 "
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={stagger}
         >
-          <motion.p
-            variants={fadeUp}
-            className="text-center text-sm font-semibold uppercase tracking-widest text-[var(--subtext)] mb-8"
-          >
-            Technologies I work with
-          </motion.p>
-          <div className="flex flex-wrap justify-center gap-3">
+          <motion.div variants={fadeUp}>
+            <SectionTitle
+              label="Skills"
+              title="Technologies I work with"
+              subtitle="The core tools I use to design, build, and ship products."
+              className="!mb-10"
+            />
+          </motion.div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-6">
             {techStack.map(({ name, icon: Icon, color }) => (
               <motion.div
                 key={name}
                 variants={fadeUp}
-                className="inline-flex items-center gap-2.5 rounded-full border border-[var(--accent)] bg-[var(--background)] px-4 py-2.5 text-sm font-medium transition hover:border-[var(--secondary)]/30 hover:shadow-md"
+                className="group flex flex-col items-center gap-3 rounded-xl px-3 py-5 transition-colors hover:bg-white"
               >
-                <Icon className={`text-lg ${color}`} />
-                {name}
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--accent)]/50 transition group-hover:bg-[var(--accent)]">
+                  <Icon className={`text-2xl ${color}`} />
+                </div>
+                <span className="text-sm font-medium text-[var(--subtext)] text-center transition group-hover:text-[var(--text)]">
+                  {name}
+                </span>
               </motion.div>
             ))}
+
+            <motion.div variants={fadeUp}>
+              <Link
+                href="/about"
+                className="group flex flex-col items-center gap-3 rounded-xl px-3 py-5 transition-colors hover:bg-white"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-dashed border-[var(--accent)] bg-[var(--accent)]/30 transition group-hover:border-[var(--secondary)]/40 group-hover:bg-[var(--accent)]">
+                  <span className="text-xl font-bold text-[var(--secondary)]">+</span>
+                </div>
+                <span className="text-sm font-medium text-[var(--secondary)] transition group-hover:text-[var(--text)]">
+                  more
+                </span>
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       </div>

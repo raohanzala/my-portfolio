@@ -72,8 +72,9 @@ export default function ProjectsPage() {
         <div className="max-w-6xl mx-auto flex flex-col gap-16">
           {/* Page Heading */}
           <SectionTitle
+            label="Portfolio"
             title="My Projects"
-            subtitle="Here are some of the real-world projects I’ve built with passion and purpose."
+            subtitle="Real-world projects I've built with passion and purpose."
           />
 
           {/* Grid of Project Cards */}

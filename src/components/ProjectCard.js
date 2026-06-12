@@ -18,7 +18,7 @@ export default function ProjectCard({ title, description, tech, image, link }) {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative block overflow-hidden rounded-lg bg-[var(--accent)] hover:shadow-lg transition"
+      className="group relative block overflow-hidden rounded-lg bg-gray-100 hover:shadow-lg transition"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

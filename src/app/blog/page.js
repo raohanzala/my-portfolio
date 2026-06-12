@@ -27,7 +27,11 @@ export default function BlogPage() {
   return (
     <MainPage>
       <div className="py-24 px-6 bg-[var(--background)] text-[var(--text)]">
-        <SectionTitle title="Blog" />
+        <SectionTitle
+          label="Articles"
+          title="Blog"
+          subtitle="Tutorials, tips, and insights from my dev journey."
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
           {blogs.map((blog, i) => (

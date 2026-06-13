@@ -26,7 +26,7 @@ const courses = [
     title: 'Web & App Development Program',
     platform: 'SMIT (Saylani)',
     certificateLink: '/certificates/smit-certificate.jpg',
-    description: 'Hands-on full-stack web development course with real-time projects.',
+    description: 'Hands-on MERN stack web development course with real-time projects.',
   },
 ];
 

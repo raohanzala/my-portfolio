@@ -12,7 +12,7 @@ export const siteConfig = {
   ogSiteName: process.env.NEXT_PUBLIC_OG_SITE_NAME || 'Hanzala Portfolio',
   footerTagline:
     process.env.NEXT_PUBLIC_FOOTER_TAGLINE ||
-    'Full-stack developer building clean, scalable web apps that solve real problems.',
+    'MERN stack developer building clean, scalable web apps that solve real problems.',
   email: process.env.NEXT_PUBLIC_EMAIL || 'raohanzala70@email.com',
   phone: process.env.NEXT_PUBLIC_PHONE || '',
   whatsappUrl: process.env.NEXT_PUBLIC_PHONE

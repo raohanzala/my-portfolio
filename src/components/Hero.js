@@ -70,7 +70,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          Full-stack Web Developer focused on building responsive, performant, and scalable web apps using modern technologies.
+          MERN Stack Web Developer focused on building responsive, performant, and scalable web apps using modern technologies.
         </motion.p>
 
         <div className="mb-6">

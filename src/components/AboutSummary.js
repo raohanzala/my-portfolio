@@ -25,7 +25,7 @@ const techStack = [
 ];
 
 const highlights = [
-  { icon: FiCode, label: 'Full-Stack Developer' },
+  { icon: FiCode, label: 'MERN Stack Developer' },
   { icon: FiLayers, label: 'MERN & Next.js' },
   { icon: FiZap, label: 'Performance Focused' },
 ];
@@ -53,7 +53,7 @@ export default function AboutSummary() {
             className="!mb-6"
           />
           <p className="mb-8 text-center text-lg leading-relaxed text-[var(--subtext)]">
-            I&apos;m a MERN-stack developer from {siteConfig.location} who builds responsive products
+            I&apos;m a MERN stack developer from {siteConfig.location} who builds responsive products
             for e-commerce, ed-tech, and business platforms — from polished front-ends
             to reliable back-end APIs.
           </p>

@@ -23,6 +23,10 @@ export default function Header() {
   const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
 
   useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
     if (!isHomePage) return;
 
     const handleScroll = () => {
@@ -36,7 +40,7 @@ export default function Header() {
 
   const isOverHero = isHomePage && !isScrolledPastHero;
 
-  const baseStyles = 'w-full z-[999] transition-all duration-300 ease-in-out';
+  const baseStyles = 'w-full z-40 transition-all duration-300 ease-in-out';
   const stickyStyles = 'fixed top-0 bg-white text-black shadow';
   const heroStyles =
     'fixed top-0 text-white bg-black/10 backdrop-blur-xl border-b border-white/10';

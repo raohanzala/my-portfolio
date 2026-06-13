@@ -93,7 +93,7 @@ export default function AboutPage() {
                   {siteConfig.fullName}
                 </strong>{" "}
                 — a MERN stack developer with around 2 years of professional
-                experience building full-stack web applications.
+                experience building MERN stack web applications.
               </p>
               <p className="mt-4">
                 I specialize in <strong>React</strong>, <strong>Next.js</strong>

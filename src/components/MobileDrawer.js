@@ -1,23 +1,31 @@
-"use client";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import Button from "./Button";
-import { useEffect, useRef } from "react";
+'use client';
+
+import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+import { useEffect, useRef } from 'react';
+import { FiX } from 'react-icons/fi';
+import SocialLinks from './SocialLinks';
+import { siteConfig } from '@/config/site';
 
 export default function MobileDrawer({ open, onClose, navItems, pathname }) {
   const drawerRef = useRef(null);
 
-  // Close on ESC
   useEffect(() => {
     if (!open) return;
+
     const handleKey = (e) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === 'Escape') onClose();
     };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKey);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKey);
+    };
   }, [open, onClose]);
 
-  // Focus trap
   useEffect(() => {
     if (open && drawerRef.current) {
       drawerRef.current.focus();
@@ -28,69 +36,82 @@ export default function MobileDrawer({ open, onClose, navItems, pathname }) {
     <AnimatePresence>
       {open && (
         <>
-          {/* Backdrop */}
           <motion.div
-            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+            className="fixed inset-0 z-40 bg-black/40"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            aria-label="Close menu"
+            aria-hidden
           />
-          {/* Drawer */}
-          <motion.nav
+
+          <motion.aside
             ref={drawerRef}
             tabIndex={-1}
-            className="fixed top-0 right-0 z-50 h-full w-4/5 max-w-xs bg-white shadow-2xl flex flex-col px-6 pt-8 pb-8 focus:outline-none"
-            initial={{ x: "100%" }}
+            className="fixed top-0 right-0 z-50 flex h-full w-full max-w-xs flex-col bg-white shadow-xl focus:outline-none"
+            initial={{ x: '100%' }}
             animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", stiffness: 400, damping: 35 }}
-            aria-label="Mobile navigation drawer"
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', stiffness: 380, damping: 36 }}
+            aria-label="Mobile navigation"
           >
-            {/* Close button */}
-            <button
-              className="self-end text-3xl text-slate-400 hover:text-slate-900 mb-8 focus:outline-none p-2 rounded-full transition"
-              onClick={onClose}
-              aria-label="Close menu"
-              style={{ marginTop: '-0.5rem', marginRight: '-0.5rem' }}
-            >
-              ×
-            </button>
-            {/* Nav links */}
-            <ul className="flex-1 flex flex-col gap-6 justify-center mt-4 mb-8">
-              {navItems.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    onClick={onClose}
-                    className={`block text-base font-semibold px-2 py-2 transition-all duration-150 text-slate-800 hover:text-[var(--secondary)] ${
-                      pathname === item.href
-                        ? 'text-[var(--secondary)] underline underline-offset-4 decoration-2'
-                        : ''
-                    }`}
-                    style={{ borderRadius: '6px' }}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            {/* CTA Button */}
-            <div className="mt-8 mb-2">
-              <Button
-                href="/contact"
-                variant="primary"
-                as="link"
-                className="w-full text-center"
+            <div className="flex items-center justify-end px-4 pt-4">
+              <button
+                type="button"
                 onClick={onClose}
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
+                aria-label="Close menu"
               >
-                Let’s Talk
-              </Button>
+                <FiX className="text-xl" />
+              </button>
             </div>
-          </motion.nav>
+
+            <nav className="flex-1 px-5 py-2">
+              <ul className="space-y-1">
+                {navItems.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <li key={item.name}>
+                      <Link
+                        href={item.href}
+                        onClick={onClose}
+                        className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+                          isActive
+                            ? 'text-[var(--secondary)]'
+                            : 'text-slate-700 hover:text-[var(--secondary)]'
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+
+            <div className="border-t border-slate-200 px-5 py-5">
+              <Link
+                href="/contact"
+                onClick={onClose}
+                className="flex w-full items-center justify-center rounded-lg bg-[var(--secondary)] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+              >
+                Let&apos;s Talk
+              </Link>
+
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="mt-4 block text-center text-sm text-[var(--subtext)] transition hover:text-[var(--secondary)]"
+              >
+                {siteConfig.email}
+              </a>
+
+              <div className="mt-4 flex justify-center">
+                <SocialLinks size="text-lg" gap="gap-4" />
+              </div>
+            </div>
+          </motion.aside>
         </>
       )}
     </AnimatePresence>
   );
-} 
+}

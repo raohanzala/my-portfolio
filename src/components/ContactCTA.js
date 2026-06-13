@@ -13,7 +13,7 @@ const fadeUp = {
 
 export default function ContactCTA() {
   return (
-    <section className="relative bg-white px-6 py-20">
+    <section className="relative bg-white sm:px-6 px-3 p py-20">
       <div
         aria-hidden
         className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-white pointer-events-none"

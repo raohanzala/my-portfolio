@@ -60,6 +60,9 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: 'UWRAfg5u6r69RhkqedzGwPYYVsXBI3QBZNZByX1eaY4',
+  },
   icons: {
     icon: '/logo.png',
     apple: '/logo.png',

@@ -1,46 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiReact,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiExpress,
-  SiMongodb,
-  SiRedux,
-  SiGithub,
-  SiGit,
-  SiBootstrap,
-  SiReactquery,
-} from "react-icons/si";
-
 import SectionTitle from "@/components/SectionTitle";
 import SocialLinks from "@/components/SocialLinks";
 import MainPage from "@/components/MainPage";
 import LearningSection from "@/components/LearnigSection";
+import TechStackCard from "@/components/TechStackCard";
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
-
-const techStack = [
-  { name: "HTML5", icon: SiHtml5, color: "text-[#E34F26]" },
-  { name: "CSS3", icon: SiCss3, color: "text-[#1572B6]" },
-  { name: "JavaScript", icon: SiJavascript, color: "text-[#F7DF1E]" },
-  { name: "React", icon: SiReact, color: "text-[#61DAFB]" },
-  { name: "Next.js", icon: SiNextdotjs, color: "text-neutral-800" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-[#06B6D4]" },
-  { name: "Bootstrap", icon: SiBootstrap, color: "text-[#7952B3]" },
-  { name: "Node.js", icon: SiNodedotjs, color: "text-[#339933]" },
-  { name: "Express", icon: SiExpress, color: "text-gray-600" },
-  { name: "MongoDB", icon: SiMongodb, color: "text-[#47A248]" },
-  { name: "Redux", icon: SiRedux, color: "text-[#764ABC]" },
-  { name: "React Query", icon: SiReactquery, color: "text-[#FF4154]" },
-  { name: "Git", icon: SiGit, color: "text-[#F05032]" },
-  { name: "GitHub", icon: SiGithub, color: "text-[#181717]" },
-];
+import { techStack } from "@/data/techStack";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -130,18 +98,8 @@ export default function AboutPageContent() {
           />
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 md:gap-6">
-            {techStack.map(({ name, icon: Icon, color }) => (
-              <div
-                key={name}
-                className="flex flex-col items-center gap-3 rounded-lg border border-slate-200 px-3 py-5"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--accent)]">
-                  <Icon className={`text-2xl ${color}`} />
-                </div>
-                <span className="text-center text-sm font-medium text-[var(--subtext)]">
-                  {name}
-                </span>
-              </div>
+            {techStack.map((tech) => (
+              <TechStackCard key={tech.name} {...tech} />
             ))}
           </div>
         </div>

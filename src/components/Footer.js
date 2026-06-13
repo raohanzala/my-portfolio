@@ -76,11 +76,11 @@ export default function Footer() {
             © {year}{' '}
             <span className="text-slate-400">{siteConfig.fullName}</span>. All rights reserved.
           </p>
-          <p>
+          {/* <p>
             Built with{' '}
             <span className="text-slate-400">Next.js</span> &{' '}
             <span className="text-slate-400">Tailwind CSS</span>
-          </p>
+          </p> */}
         </div>
       </div>
     </footer>

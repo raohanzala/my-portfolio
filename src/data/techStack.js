@@ -1,0 +1,33 @@
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiRedux,
+  SiGithub,
+  SiGit,
+  SiBootstrap,
+  SiReactquery,
+} from 'react-icons/si';
+
+export const techStack = [
+  { name: 'HTML5', icon: SiHtml5, color: 'text-[#E34F26]' },
+  { name: 'CSS3', icon: SiCss3, color: 'text-[#1572B6]' },
+  { name: 'JavaScript', icon: SiJavascript, color: 'text-[#F7DF1E]' },
+  { name: 'React', icon: SiReact, color: 'text-[#61DAFB]' },
+  { name: 'Next.js', icon: SiNextdotjs, color: 'text-neutral-800' },
+  { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'text-[#06B6D4]' },
+  { name: 'Bootstrap', icon: SiBootstrap, color: 'text-[#7952B3]' },
+  { name: 'Node.js', icon: SiNodedotjs, color: 'text-[#339933]' },
+  { name: 'Express', icon: SiExpress, color: 'text-gray-600' },
+  { name: 'MongoDB', icon: SiMongodb, color: 'text-[#47A248]' },
+  { name: 'Redux', icon: SiRedux, color: 'text-[#764ABC]' },
+  { name: 'React Query', icon: SiReactquery, color: 'text-[#FF4154]' },
+  { name: 'Git', icon: SiGit, color: 'text-[#F05032]' },
+  { name: 'GitHub', icon: SiGithub, color: 'text-[#181717]' },
+];

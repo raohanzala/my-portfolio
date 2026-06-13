@@ -1,13 +1,20 @@
-import { FiMail, FiPhone } from 'react-icons/fi';
 import SectionTitle from '@/components/SectionTitle';
 import ContactForm from '@/components/ContactForm';
 import SocialLinks from '@/components/SocialLinks';
 import MainPage from '@/components/MainPage';
-import { siteConfig } from '@/config/site';
+import ContactInfo from '@/components/ContactInfo';
+import { siteConfig, absoluteUrl } from '@/config/site';
 
 export const metadata = {
-  title: `Contact | ${siteConfig.name}`,
-  description: 'Let’s build something amazing together.',
+  title: 'Contact',
+  description: `Hire ${siteConfig.fullName} for your next web project. Available for freelance work, collaborations, and full-time roles. Based in ${siteConfig.city}, ${siteConfig.location}.`,
+  alternates: { canonical: absoluteUrl('/contact') },
+  openGraph: {
+    title: `Contact ${siteConfig.name} | Hire a MERN Stack Developer`,
+    description: 'Available for freelance work, collaborations, and full-time roles.',
+    url: absoluteUrl('/contact'),
+    images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.fullName }],
+  },
 };
 
 export default function ContactPage() {
@@ -22,37 +29,12 @@ export default function ContactPage() {
           />
 
           <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
-            <div className="text-center lg:text-left">
-              <p className="text-lg leading-relaxed text-[var(--subtext)] lg:text-xl">
-                I&apos;m open to freelance work, collaborations, and full-time opportunities.
-                Reach me by email, phone, or WhatsApp.
-              </p>
-
-              <div className="mt-6 flex flex-col items-center gap-3 lg:items-start">
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="inline-flex items-center gap-2 text-[var(--secondary)] font-medium transition hover:underline"
-                >
-                  <FiMail />
-                  {siteConfig.email}
-                </a>
-                {siteConfig.phone && (
-                  <a
-                    href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
-                    className="inline-flex items-center gap-2 text-[var(--secondary)] font-medium transition hover:underline"
-                  >
-                    <FiPhone />
-                    {siteConfig.phone}
-                  </a>
-                )}
-              </div>
-
-              <div className="mt-8 flex justify-center lg:justify-start">
-                <SocialLinks align="left" size="text-xl" />
-              </div>
-            </div>
-
+            <ContactInfo />
             <ContactForm />
+          </div>
+
+          <div className="flex justify-center">
+            <SocialLinks size="text-xl" />
           </div>
         </div>
       </section>

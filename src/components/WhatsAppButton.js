@@ -33,7 +33,7 @@ export default function WhatsAppButton() {
             <motion.button
               type="button"
               aria-label="Close chat"
-              className="fixed inset-0 z-40 cursor-default"
+              className="fixed inset-0 z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

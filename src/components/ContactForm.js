@@ -6,25 +6,54 @@ import Button from './Button';
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    if (status === 'error') {
+      setStatus('idle');
+      setErrorMessage('');
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) return;
-    setSubmitted(true);
-    setForm({ name: '', email: '', message: '' })
-    // Optionally send data to API
-    console.log('Form submitted:', form);
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setStatus('error');
+        setErrorMessage(data.error || 'Failed to send message.');
+        return;
+      }
+
+      setStatus('success');
+      setForm({ name: '', email: '', message: '' });
+    } catch {
+      setStatus('error');
+      setErrorMessage('Network error. Please try again.');
+    }
   };
+
+  const inputClass =
+    'w-full rounded-lg border border-slate-200 bg-white px-5 py-4 text-base text-[var(--text)] placeholder:text-[var(--subtext)] focus:border-[var(--secondary)] focus:outline-none disabled:opacity-60';
 
   return (
     <motion.form
       onSubmit={handleSubmit}
-      className="max-w-xl mx-auto grid gap-4 mt-8"
+      className="grid w-full gap-5"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -35,7 +64,8 @@ export default function ContactForm() {
         placeholder="Your Name"
         value={form.name}
         onChange={handleChange}
-        className="p-3 rounded bg-[var(--accent)] text-[var(--text)]"
+        className={inputClass}
+        disabled={status === 'loading'}
         required
       />
       <input
@@ -44,27 +74,39 @@ export default function ContactForm() {
         placeholder="Your Email"
         value={form.email}
         onChange={handleChange}
-        className="p-3 rounded bg-[var(--accent)] text-[var(--text)]"
+        className={inputClass}
+        disabled={status === 'loading'}
         required
       />
       <textarea
         name="message"
         placeholder="Your Message"
-        rows="5"
+        rows="6"
         value={form.message}
         onChange={handleChange}
-        className="p-3 rounded bg-[var(--accent)] text-[var(--text)]"
+        className={inputClass}
+        disabled={status === 'loading'}
         required
-      ></textarea>
+      />
+
+      {status === 'error' && (
+        <p className="text-sm text-red-600">{errorMessage}</p>
+      )}
+
+      {status === 'success' && (
+        <p className="text-sm text-emerald-600">
+          Message sent successfully! I&apos;ll get back to you soon.
+        </p>
+      )}
 
       <Button
         type="submit"
         variant="primary"
-        size="md"
-        className="mt-4"
-        disabled={submitted}
+        size="lg"
+        className="mt-2 w-full"
+        disabled={status === 'loading' || status === 'success'}
       >
-        {submitted ? 'Thank you! ✅' : 'Send Message'}
+        {status === 'loading' ? 'Sending...' : status === 'success' ? 'Sent!' : 'Send Message'}
       </Button>
     </motion.form>
   );

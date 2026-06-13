@@ -1,7 +1,7 @@
 'use client';
 
 import SectionTitle from '@/components/SectionTitle';
-import ProjectCard from '@/components/ProjectCard';
+import ProjectListItem from '@/components/ProjectListItem';
 import MainPage from '@/components/MainPage';
 import { siteConfig } from '@/config/site';
 
@@ -13,7 +13,6 @@ const projects = [
     tech: ['Next.js', 'Tailwind CSS', 'MongoDB'],
     image: '/realtimewrist.png',
     link: 'https://realtimewrist.com',
-
   },
   {
     title: 'Realtime Wrist Admin Dashboard',
@@ -21,8 +20,7 @@ const projects = [
       'An advanced dashboard for managing orders, products, users, and other administrative operations of Realtime Wrist.',
     tech: ['React', 'Redux', 'React Query', 'Node.js'],
     image: '/realtimewrist-admin.png',
-    link: 'https://realtimewrist-admin.vercel.app', // (Replace with the actual admin link if different)
-
+    link: 'https://realtimewrist-admin.vercel.app',
   },
   {
     title: 'Martygo - Online Mart',
@@ -38,8 +36,7 @@ const projects = [
       'A modern business website designed for a US-based sales company, focused on professional branding and presentation.',
     tech: ['Next.js', 'Tailwind CSS'],
     image: '/hmdynamicsllc.png',
-    link: 'https://www.hmdynamicsllc.com', // Add live link when available
-
+    link: 'https://www.hmdynamicsllc.com',
   },
   {
     title: 'Personal Portfolio',
@@ -51,48 +48,40 @@ const projects = [
   },
   {
     title: 'Haida Hajj And Umrah',
-    description: 'A dedicated travel agency website offering Hajj and Umrah packages with a clean design, responsive layout, and seamless inquiry handling for pilgrims.',
-    tech: ['Next.js', 'Framer motion', 'Tailwind'],
+    description:
+      'A dedicated travel agency website offering Hajj and Umrah packages with a clean design, responsive layout, and seamless inquiry handling for pilgrims.',
+    tech: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
     image: '/hadiahajj.png',
     link: 'https://hadiahajjandumrah.vercel.app/',
   },
   {
     title: 'Dar-Ul-Uloom Memon Institute',
-    description: 'A comprehensive website built for an Islamic institute with a clean and responsive design.',
-    tech: ['Next js', 'Animations'],
+    description:
+      'A comprehensive website built for an Islamic institute with a clean and responsive design.',
+    tech: ['Next.js', 'Tailwind CSS'],
     image: '/darul-uloom-memon.png',
     link: 'https://darul-uloom-memon.vercel.app',
   },
 ];
 
-
 export default function ProjectsPage() {
   return (
     <MainPage>
-      <div className="px-6 py-20 bg-[var(--background)] text-[var(--text)] max-w-[1280px] mx-auto">
-        <div className="max-w-6xl mx-auto flex flex-col gap-16">
-          {/* Page Heading */}
+      <section className="bg-[var(--background)] px-4 py-20 text-[var(--text)] sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl space-y-10">
           <SectionTitle
             label="Portfolio"
             title="My Projects"
-            subtitle="Real-world projects I've built with passion and purpose."
+            subtitle={`Real-world projects I've built with passion and purpose. ${projects.length} live projects.`}
           />
 
-          {/* Grid of Project Cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="border-t border-slate-200">
             {projects.map((project, idx) => (
-              <ProjectCard
-                key={idx}
-                title={project.title}
-                description={project.description}
-                tech={project.tech}
-                link={project.link}
-                image={project.image}
-              />
+              <ProjectListItem key={project.title} index={idx} {...project} />
             ))}
           </div>
         </div>
-      </div>
+      </section>
     </MainPage>
   );
 }

@@ -61,19 +61,18 @@ export default function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex  items-center gap-6">
+        <nav className="hidden md:flex items-center gap-6">
           {navItems.map((item) => {
             const linkColor = isOverHero
-              ? 'text-white hover:text-[var(--secondary)]'
-              : 'text-gray-800 hover:text-[var(--secondary)]';
+              ? 'text-white hover:text-[var(--secondary)] font-medium'
+              : 'text-gray-800 hover:text-[var(--secondary)] font-bold';
             return (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`group relative text-sm uppercase font-medium transition-all ${linkColor}`}
+                className={`group relative text-sm uppercase transition-all ${linkColor}`}
               >
                 {item.name}
-                {/* <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-[var(--secondary)] transition-transform scale-x-0 group-hover:scale-x-100 origin-left" /> */}
               </Link>
             );
           })}

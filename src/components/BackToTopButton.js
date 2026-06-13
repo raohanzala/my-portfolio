@@ -25,7 +25,7 @@ export default function BackToTopButton() {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-5 cursor-pointer right-5 z-50 bg-[var(--secondary)] text-[var(--primary)] p-3 rounded-full shadow-lg hover:scale-110 transition-all"
+          className="fixed bottom-[5.5rem] right-5 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-[var(--secondary)] text-white shadow-lg transition-all hover:scale-110"
           aria-label="Back to top"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}

@@ -31,38 +31,20 @@ const highlights = [
 ];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-};
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
 export default function AboutSummary() {
   return (
-    <section className="relative py-24 px-6 overflow-hidden bg-[var(--background)] text-[var(--text)]">
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-[#1e293b]/8 via-[var(--background)] to-[var(--background)] pointer-events-none"
-      />
-      <div
-        aria-hidden
-        className="absolute -top-20 right-0 h-72 w-72 rounded-full bg-[var(--secondary)]/8 blur-3xl pointer-events-none"
-      />
-      <div
-        aria-hidden
-        className="absolute bottom-0 -left-24 h-64 w-64 rounded-full bg-sky-400/8 blur-3xl pointer-events-none"
-      />
-
-      <div className="relative max-w-6xl mx-auto">
+    <section className="bg-[var(--background)] px-6 py-24 text-[var(--text)]">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="max-w-3xl mx-auto"
+          className="mx-auto max-w-3xl"
         >
           <SectionTitle
             label="About Me"
@@ -70,17 +52,17 @@ export default function AboutSummary() {
             highlight="clean, scalable web apps"
             className="!mb-6"
           />
-          <p className="text-[var(--subtext)] text-lg leading-relaxed mb-8 text-center">
+          <p className="mb-8 text-center text-lg leading-relaxed text-[var(--subtext)]">
             I&apos;m a MERN-stack developer from {siteConfig.location} who builds responsive products
             for e-commerce, ed-tech, and business platforms — from polished front-ends
             to reliable back-end APIs.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <div className="mb-8 flex flex-wrap justify-center gap-3">
             {highlights.map(({ icon: Icon, label }) => (
               <span
                 key={label}
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-sm font-medium text-[var(--text)] shadow-sm"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-[var(--text)]"
               >
                 <Icon className="text-[var(--secondary)]" />
                 {label}
@@ -95,53 +77,40 @@ export default function AboutSummary() {
           </div>
         </motion.div>
 
-        <motion.div
-          className="mt-20 pt-16 border-t border-slate-200/80"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger}
-        >
-          <motion.div variants={fadeUp}>
-            <SectionTitle
-              label="Skills"
-              title="Technologies I work with"
-              subtitle="The core tools I use to design, build, and ship products."
-              className="!mb-10"
-            />
-          </motion.div>
+        <div className="mt-20 border-t border-slate-200 pt-16">
+          <SectionTitle
+            label="Skills"
+            title="Technologies I work with"
+            subtitle="The core tools I use to design, build, and ship products."
+            className="!mb-10"
+          />
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7 md:gap-6">
             {techStack.map(({ name, icon: Icon, color }) => (
-              <motion.div
+              <div
                 key={name}
-                variants={fadeUp}
-                className="group flex flex-col items-center gap-3 rounded-xl border border-slate-200/80 bg-white/80 px-3 py-5 shadow-sm transition-all hover:-translate-y-1 hover:border-[var(--secondary)]/30 hover:shadow-md"
+                className="flex flex-col items-center gap-3 rounded-lg border border-slate-200 px-3 py-5"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--accent)]/80 transition group-hover:bg-[var(--accent)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--accent)]">
                   <Icon className={`text-2xl ${color}`} />
                 </div>
-                <span className="text-sm font-medium text-[var(--subtext)] text-center transition group-hover:text-[var(--text)]">
+                <span className="text-center text-sm font-medium text-[var(--subtext)]">
                   {name}
                 </span>
-              </motion.div>
+              </div>
             ))}
 
-            <motion.div variants={fadeUp}>
-              <Link
-                href="/about"
-                className="group flex flex-col items-center gap-3 rounded-xl border border-dashed border-slate-200 bg-white/60 px-3 py-5 shadow-sm transition-all hover:-translate-y-1 hover:border-[var(--secondary)]/40 hover:shadow-md"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-dashed border-[var(--accent)] bg-[var(--accent)]/50 transition group-hover:border-[var(--secondary)]/40 group-hover:bg-[var(--accent)]">
-                  <span className="text-xl font-bold text-[var(--secondary)]">+</span>
-                </div>
-                <span className="text-sm font-medium text-[var(--secondary)] transition group-hover:text-[var(--text)]">
-                  more
-                </span>
-              </Link>
-            </motion.div>
+            <Link
+              href="/about"
+              className="flex flex-col items-center gap-3 rounded-lg border border-dashed border-slate-200 px-3 py-5"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-dashed border-slate-300 bg-[var(--accent)]">
+                <span className="text-xl font-bold text-[var(--secondary)]">+</span>
+              </div>
+              <span className="text-sm font-medium text-[var(--secondary)]">more</span>
+            </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

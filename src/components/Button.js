@@ -8,6 +8,8 @@ export default function Button({
   children,
   href,
   onClick,
+  type,
+  disabled = false,
   variant = 'primary', // 'primary' | 'secondary' | 'ghost'
   size = 'md',         // 'sm' | 'md' | 'lg'
   className = '',
@@ -15,7 +17,7 @@ export default function Button({
   white = false,       // ✅ NEW: makes border & text white
 }) {
   const base =
-    'inline-flex cursor-pointer text-nowrap items-center justify-center font-medium rounded relative overflow-hidden group transition-all duration-300';
+    'inline-flex cursor-pointer text-nowrap items-center justify-center font-medium rounded relative overflow-hidden group transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60';
 
   const sizes = {
     sm: 'px-3 py-1.5 text-sm',
@@ -64,8 +66,10 @@ export default function Button({
     </Link>
   ) : (
     <MotionTag
-      whileTap={{ scale: 0.95 }}
-      whileHover={{ scale: 1.05 }}
+      type={type}
+      disabled={disabled}
+      whileTap={disabled ? undefined : { scale: 0.95 }}
+      whileHover={disabled ? undefined : { scale: 1.05 }}
       onClick={onClick}
       className={combined}
     >

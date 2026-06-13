@@ -33,69 +33,27 @@ const projects = [
   },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-};
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
-
 export default function ProjectShowcase() {
   return (
-    <section className="relative py-24 px-6 overflow-hidden bg-slate-50 text-[var(--text)]">
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-[var(--background)] via-slate-50 to-slate-50 pointer-events-none"
-      />
-      <div
-        aria-hidden
-        className="absolute top-1/2 -right-32 h-80 w-80 rounded-full bg-[var(--secondary)]/6 blur-3xl pointer-events-none"
-      />
-      <div
-        aria-hidden
-        className="absolute -bottom-16 left-1/4 h-64 w-64 rounded-full bg-blue-400/6 blur-3xl pointer-events-none"
-      />
+    <section className="border-t border-slate-200 bg-slate-50 px-4 py-24 text-[var(--text)] sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle
+          label="My Work"
+          title="Featured Projects"
+          subtitle="A selection of recent builds — from e-commerce platforms to admin dashboards."
+        />
 
-      <div className="relative max-w-6xl mx-auto">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-        >
-          <SectionTitle
-            label="My Work"
-            title="Featured Projects"
-            subtitle="A selection of recent builds — from e-commerce platforms to admin dashboards."
-          />
-        </motion.div>
-
-        <motion.div
-          className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
-          variants={stagger}
-        >
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="mt-12 flex justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
+        <div className="mt-12 flex justify-center">
           <Button href="/projects" size="lg" as="link">
             View All Projects <FiArrowRight />
           </Button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

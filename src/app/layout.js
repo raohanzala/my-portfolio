@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AnimatedPage from './AnimatedPage';
 import BackToTopButton from '@/components/BackToTopButton';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import { siteConfig } from '@/config/site';
 
 const robotoCondensed = Roboto_Condensed({
@@ -47,7 +48,9 @@ export default function RootLayout({ children }) {
         <Header />
         <AnimatedPage>{children}</AnimatedPage> {/* ✅ wrapped in client component */}
         <Footer />
-        <BackToTopButton />
+        {/* bottom-right: WhatsApp + back-to-top stacked above */}
+        <WhatsAppButton />
+        {/* <BackToTopButton /> */}
       </body>
     </html>
   );

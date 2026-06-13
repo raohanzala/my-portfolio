@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Button from './Button';
 import SectionTitle from './SectionTitle';
-import { FiArrowRight, FiMail } from 'react-icons/fi';
+import { FiArrowRight, FiMail, FiPhone } from 'react-icons/fi';
 import { siteConfig } from '@/config/site';
 
 const fadeUp = {
@@ -49,13 +49,24 @@ export default function ContactCTA() {
               className="[&_h2]:text-white [&_p]:text-slate-300 [&_h2_span]:text-sky-400"
             />
 
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-slate-300 transition hover:border-white/30 hover:text-white"
-            >
-              <FiMail className="text-[var(--secondary)]" />
-              {siteConfig.email}
-            </a>
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-slate-300 transition hover:border-white/30 hover:text-white"
+              >
+                <FiMail className="text-[var(--secondary)]" />
+                {siteConfig.email}
+              </a>
+              {siteConfig.phone && (
+                <a
+                  href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-slate-300 transition hover:border-white/30 hover:text-white"
+                >
+                  <FiPhone className="text-[var(--secondary)]" />
+                  {siteConfig.phone}
+                </a>
+              )}
+            </div>
 
             <div className="flex w-full max-w-md flex-col justify-center gap-4 sm:flex-row">
               <Button

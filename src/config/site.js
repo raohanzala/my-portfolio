@@ -14,6 +14,10 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_FOOTER_TAGLINE ||
     'Full-stack developer building clean, scalable web apps that solve real problems.',
   email: process.env.NEXT_PUBLIC_EMAIL || 'raohanzala70@email.com',
+  phone: process.env.NEXT_PUBLIC_PHONE || '',
+  whatsappUrl: process.env.NEXT_PUBLIC_PHONE
+    ? `https://wa.me/${process.env.NEXT_PUBLIC_PHONE.replace(/\D/g, '')}`
+    : '',
   social: {
     github: process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/raohanzala',
     linkedin:

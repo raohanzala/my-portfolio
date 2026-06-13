@@ -59,6 +59,14 @@ export default function Footer() {
             >
               {siteConfig.email}
             </a>
+            {siteConfig.phone && (
+              <a
+                href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
+                className="text-sm text-slate-500 transition hover:text-white"
+              >
+                {siteConfig.phone}
+              </a>
+            )}
           </div>
         </div>
 

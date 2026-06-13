@@ -1,6 +1,7 @@
 import SectionTitle from '@/components/SectionTitle';
 import BlogCard from '@/components/BlogCard';
 import MainPage from '@/components/MainPage';
+import { siteConfig } from '@/config/site';
 
 const blogs = [
   {
@@ -19,7 +20,7 @@ const blogs = [
 ];
 
 export const metadata = {
-  title: 'Blog | Hanzala',
+  title: `Blog | ${siteConfig.name}`,
   description: 'Read tutorials, tips, and insights from my dev journey.',
 };
 

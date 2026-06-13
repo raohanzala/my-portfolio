@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import Button from './Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import MobileDrawer from './MobileDrawer';
+import { siteConfig } from '@/config/site';
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -54,9 +55,9 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold tracking-widest">
           <span className={isOverHero ? 'text-white' : 'text-black'}>
-            Hanzala
+            {siteConfig.name}
           </span>
-          <span className="text-[var(--secondary)]">.dev</span>
+          <span className="text-[var(--secondary)]">{siteConfig.brandSuffix}</span>
         </Link>
 
         {/* Desktop Nav */}

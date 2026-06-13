@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AnimatedPage from './AnimatedPage';
 import BackToTopButton from '@/components/BackToTopButton';
+import { siteConfig } from '@/config/site';
 
 const robotoCondensed = Roboto_Condensed({
   subsets: ['latin'],
@@ -11,20 +12,20 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 export const metadata = {
-  title: 'Hanzala | Web Developer Portfolio',
-  description: 'Crafting modern web apps with Next.js and React.',
-  metadataBase: new URL('https://your-portfolio-domain.com'),
+  title: siteConfig.title,
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url),
   openGraph: {
-    title: 'Hanzala | Web Developer Portfolio',
-    description: 'Crafting modern web apps with Next.js and React.',
-    url: 'https://your-portfolio-domain.com', // replace with your actual domain
-    siteName: 'Hanzala Portfolio',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.ogSiteName,
     images: [
       {
         url: '/logo.png',
         width: 1200,
         height: 630,
-        alt: 'Hanzala Portfolio Preview',
+        alt: `${siteConfig.ogSiteName} Preview`,
       },
     ],
     locale: 'en_US',
@@ -32,8 +33,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hanzala | Web Developer Portfolio',
-    description: 'Crafting modern web apps with Next.js and React.',
+    title: siteConfig.title,
+    description: siteConfig.description,
     images: ['/logo.png'],
   },
 };

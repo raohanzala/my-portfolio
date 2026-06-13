@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import SocialLinks from '@/components/SocialLinks';
 import Image from 'next/image';
+import { siteConfig } from '@/config/site';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -46,7 +47,7 @@ export default function AboutIntroSection() {
           <div className="relative shrink-0">
             <Image
               src="/your-photo.jpg"
-              alt="Hanzala"
+              alt={siteConfig.name}
               width={208} // sm:w-52 = 13rem = 208px
               height={208}
               className="rounded-full object-cover border-4 border-[var(--secondary)] shadow-xl"
@@ -60,7 +61,7 @@ export default function AboutIntroSection() {
           {/* Bio Card */}
           <div className="bg-white/5 backdrop-blur-sm border border-[var(--accent)] p-6 rounded-xl shadow-md max-w-2xl transition hover:shadow-lg">
             <p className="text-[var(--subtext)] leading-relaxed text-base sm:text-lg">
-              Hi! I&apos;m <span className="text-[var(--secondary)] font-medium">Hanzala</span>, a passionate web developer from Pakistan. I specialize in building modern, clean, and responsive web apps.
+              Hi! I&apos;m <span className="text-[var(--secondary)] font-medium">{siteConfig.name}</span>, a passionate web developer from {siteConfig.location}. I specialize in building modern, clean, and responsive web apps.
               <br /><br />
               I love working with <strong>JavaScript</strong>, <strong>React</strong>, and <strong>Next.js</strong> to bring ideas to life. Whether it&apos;s building a beautiful front-end or an efficient back-end API, I enjoy every part of the process.
               <br /><br />

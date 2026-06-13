@@ -18,14 +18,14 @@ export default function ProjectCard({ title, description, tech, image, link }) {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative block overflow-hidden rounded-lg bg-gray-100 hover:shadow-lg transition"
+      className="group relative block overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--secondary)]/25 hover:shadow-xl"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
       {/* LIVE Badge */}
-      <span className="absolute top-3 right-3 z-10 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">
+      <span className="absolute top-3 right-3 z-10 rounded-full bg-emerald-600 px-2.5 py-1 text-xs font-bold text-white shadow-sm">
         LIVE
       </span>
 
@@ -46,7 +46,7 @@ export default function ProjectCard({ title, description, tech, image, link }) {
         <p className="text-sm text-[var(--subtext)] mt-2">{description}</p>
 
         {/* Project Link Display */}
-        <div className="mt-3 flex items-center gap-1 text-xs text-blue-600 hover:underline truncate">
+        <div className="mt-3 flex items-center gap-1 truncate text-xs text-[var(--secondary)] group-hover:underline">
           <FaExternalLinkAlt className="w-3 h-3" />
           <span>{getDomain(link)}</span>
         </div>
@@ -56,7 +56,7 @@ export default function ProjectCard({ title, description, tech, image, link }) {
           {tech.map((item, index) => (
             <span
               key={index}
-              className="bg-[var(--background)] border px-2 py-1 rounded"
+              className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1"
             >
               {item}
             </span>

@@ -1,14 +1,15 @@
 "use client"
 import { motion } from 'framer-motion';
+import { siteConfig } from '@/config/site';
 
 const testimonials = [
   {
-    quote: "Working with Hanzala was a fantastic experience. He delivered our project on time and exceeded our expectations!",
+    quote: `Working with ${siteConfig.name} was a fantastic experience. He delivered our project on time and exceeded our expectations!`,
     name: "Sarah Lee",
     role: "Product Manager, Realtime Wrist"
   },
   {
-    quote: "Hanzala's attention to detail and technical expertise are top-notch. Highly recommended for any web project.",
+    quote: `${siteConfig.name}'s attention to detail and technical expertise are top-notch. Highly recommended for any web project.`,
     name: "Michael Chen",
     role: "CTO, HM Dynamics LLC"
   },

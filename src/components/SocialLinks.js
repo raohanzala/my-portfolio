@@ -1,6 +1,7 @@
 'use client';
 
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { siteConfig } from '@/config/site';
 
 export default function SocialLinks({
   align = 'center',
@@ -15,22 +16,22 @@ export default function SocialLinks({
   };
 
   const links = [
-    {
-      href: 'https://github.com/raohanzala',
+    siteConfig.social.github && {
+      href: siteConfig.social.github,
       label: 'GitHub',
       icon: <FaGithub />,
     },
-    {
-      href: 'https://www.linkedin.com/in/rao-hanzala-65a719371/',
+    siteConfig.social.linkedin && {
+      href: siteConfig.social.linkedin,
       label: 'LinkedIn',
       icon: <FaLinkedin />,
     },
-    {
-      href: 'mailto:raohanzala70@email.com',
+    siteConfig.email && {
+      href: `mailto:${siteConfig.email}`,
       label: 'Email',
       icon: <FaEnvelope />,
     },
-  ];
+  ].filter(Boolean);
 
   return (
     <div className={`flex ${gap} ${alignment[align]} z-20 items-center ${color}`}>

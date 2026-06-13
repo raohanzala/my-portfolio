@@ -3,6 +3,7 @@
 import SectionTitle from '@/components/SectionTitle';
 import ProjectCard from '@/components/ProjectCard';
 import MainPage from '@/components/MainPage';
+import { siteConfig } from '@/config/site';
 
 const projects = [
   {
@@ -46,7 +47,7 @@ const projects = [
       'The site you’re currently viewing — built with performance, responsive design, modern animations, and clean code.',
     tech: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
     image: '/hanzala-portfolio.png',
-    link: 'https://hanzala-portfolio.vercel.app',
+    link: siteConfig.portfolioUrl,
   },
   {
     title: 'Haida Hajj And Umrah',

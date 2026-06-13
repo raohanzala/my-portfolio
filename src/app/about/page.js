@@ -13,6 +13,7 @@ import SocialLinks from '@/components/SocialLinks';
 import MainPage from '@/components/MainPage';
 import LearningSection from '@/components/LearnigSection';
 import Image from 'next/image';
+import { siteConfig } from '@/config/site';
 
 const techStack = [
   { name: 'HTML5', icon: SiHtml5, color: 'text-[#E34F26]' },
@@ -88,7 +89,7 @@ export default function AboutPage() {
                 <div className="relative h-full w-full overflow-hidden rounded-lg p-1.5">
                   <Image
                     src="/hanzala.png"
-                    alt="Rao Hanzala"
+                    alt={siteConfig.fullName}
                     fill
                     sizes="(max-width: 768px) 280px, 280px"
                     className="rounded-lg object-cover object-center"
@@ -101,7 +102,7 @@ export default function AboutPage() {
             {/* Bio */}
             <div className="text-lg text-[var(--subtext)] leading-relaxed">
               <p>
-                Hi! I&apos;m <strong className="text-[var(--secondary)]">Rao Hanzala</strong> — a professional MERN stack web developer.
+                Hi! I&apos;m <strong className="text-[var(--secondary)]">{siteConfig.fullName}</strong> — a professional MERN stack web developer.
                 I love turning ideas into fast, and user-friendly digital products.
               </p>
               <br />

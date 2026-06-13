@@ -13,6 +13,7 @@ import {
   SiNodedotjs,
   SiMongodb,
 } from 'react-icons/si';
+import { siteConfig } from '@/config/site';
 
 const techStack = [
   { name: 'JavaScript', icon: SiJavascript, color: 'text-yellow-500' },
@@ -44,7 +45,15 @@ export default function AboutSummary() {
     <section className="relative py-24 px-6 overflow-hidden bg-[var(--background)] text-[var(--text)]">
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-[var(--accent)]/70 via-[var(--background)] to-[var(--background)] pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-b from-[#1e293b]/8 via-[var(--background)] to-[var(--background)] pointer-events-none"
+      />
+      <div
+        aria-hidden
+        className="absolute -top-20 right-0 h-72 w-72 rounded-full bg-[var(--secondary)]/8 blur-3xl pointer-events-none"
+      />
+      <div
+        aria-hidden
+        className="absolute bottom-0 -left-24 h-64 w-64 rounded-full bg-sky-400/8 blur-3xl pointer-events-none"
       />
 
       <div className="relative max-w-6xl mx-auto">
@@ -62,7 +71,7 @@ export default function AboutSummary() {
             className="!mb-6"
           />
           <p className="text-[var(--subtext)] text-lg leading-relaxed mb-8 text-center">
-            I&apos;m a MERN-stack developer from Pakistan who builds responsive products
+            I&apos;m a MERN-stack developer from {siteConfig.location} who builds responsive products
             for e-commerce, ed-tech, and business platforms — from polished front-ends
             to reliable back-end APIs.
           </p>
@@ -71,9 +80,9 @@ export default function AboutSummary() {
             {highlights.map(({ icon: Icon, label }) => (
               <span
                 key={label}
-                className="inline-flex items-center gap-2 rounded-full  border-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--text)]"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-sm font-medium text-[var(--text)] shadow-sm"
               >
-                {/* <Icon className="text-[var(--secondary)]" /> */}
+                <Icon className="text-[var(--secondary)]" />
                 {label}
               </span>
             ))}
@@ -86,9 +95,8 @@ export default function AboutSummary() {
           </div>
         </motion.div>
 
-        {/* Tech stack */}
         <motion.div
-          className="mt-20 pt-16 "
+          className="mt-20 pt-16 border-t border-slate-200/80"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -108,9 +116,9 @@ export default function AboutSummary() {
               <motion.div
                 key={name}
                 variants={fadeUp}
-                className="group flex flex-col items-center gap-3 rounded-xl px-3 py-5 transition-colors hover:bg-white"
+                className="group flex flex-col items-center gap-3 rounded-xl border border-slate-200/80 bg-white/80 px-3 py-5 shadow-sm transition-all hover:-translate-y-1 hover:border-[var(--secondary)]/30 hover:shadow-md"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--accent)]/50 transition group-hover:bg-[var(--accent)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--accent)]/80 transition group-hover:bg-[var(--accent)]">
                   <Icon className={`text-2xl ${color}`} />
                 </div>
                 <span className="text-sm font-medium text-[var(--subtext)] text-center transition group-hover:text-[var(--text)]">
@@ -122,9 +130,9 @@ export default function AboutSummary() {
             <motion.div variants={fadeUp}>
               <Link
                 href="/about"
-                className="group flex flex-col items-center gap-3 rounded-xl px-3 py-5 transition-colors hover:bg-white"
+                className="group flex flex-col items-center gap-3 rounded-xl border border-dashed border-slate-200 bg-white/60 px-3 py-5 shadow-sm transition-all hover:-translate-y-1 hover:border-[var(--secondary)]/40 hover:shadow-md"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-dashed border-[var(--accent)] bg-[var(--accent)]/30 transition group-hover:border-[var(--secondary)]/40 group-hover:bg-[var(--accent)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-dashed border-[var(--accent)] bg-[var(--accent)]/50 transition group-hover:border-[var(--secondary)]/40 group-hover:bg-[var(--accent)]">
                   <span className="text-xl font-bold text-[var(--secondary)]">+</span>
                 </div>
                 <span className="text-sm font-medium text-[var(--secondary)] transition group-hover:text-[var(--text)]">

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import SocialLinks from './SocialLinks';
+import { siteConfig } from '@/config/site';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -14,44 +15,31 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-[#0f172a] text-slate-300 border-t border-white/10">
-      <div
-        aria-hidden
-        className="absolute -top-32 -left-32 h-72 w-72 rounded-full bg-[var(--secondary)]/15 blur-3xl pointer-events-none"
-      />
-      <div
-        aria-hidden
-        className="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-blue-400/10 blur-3xl pointer-events-none"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-[#1e293b]/40 to-transparent pointer-events-none"
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+    <footer className="border-t-2 border-[var(--secondary)]/30 bg-[#0f172a] text-slate-400">
+      <div className="mx-auto max-w-7xl px-6 py-10">
+        <div className="flex flex-col items-center gap-10 md:flex-row md:items-start md:justify-between">
           {/* Brand */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
-            <Link href="/" className="text-2xl font-bold tracking-widest">
-              <span className="text-white">Hanzala</span>
-              <span className="text-[var(--secondary)]">.dev</span>
+          <div className="flex flex-col items-center gap-3 text-center md:items-start md:text-left md:max-w-xs">
+            <Link href="/" className="text-xl font-bold tracking-widest">
+              <span className="text-white">{siteConfig.name}</span>
+              <span className="text-[var(--secondary)]">{siteConfig.brandSuffix}</span>
             </Link>
-            <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
-              Full-stack developer building clean, scalable web apps that solve real problems.
+            <p className="text-sm leading-relaxed text-slate-500">
+              {siteConfig.footerTagline}
             </p>
           </div>
 
           {/* Navigation */}
-          <div className="flex flex-col items-center md:items-start gap-4">
-            <p className="text-xs font-medium uppercase tracking-widest text-slate-500">
+          <div className="flex flex-col items-center gap-3 md:items-start">
+            <p className="text-xs font-medium uppercase tracking-widest text-slate-600">
               Navigation
             </p>
-            <nav className="flex flex-col items-center md:items-start gap-3">
+            <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 md:justify-start">
               {navLinks.map(({ name, href }) => (
                 <Link
                   key={name}
                   href={href}
-                  className="text-sm text-slate-300 transition hover:text-white"
+                  className="text-sm text-slate-400 transition hover:text-white"
                 >
                   {name}
                 </Link>
@@ -60,30 +48,30 @@ export default function Footer() {
           </div>
 
           {/* Connect */}
-          <div className="flex flex-col items-center md:items-start gap-4">
-            <p className="text-xs font-medium uppercase tracking-widest text-slate-500">
+          <div className="flex flex-col items-center gap-3 md:items-end">
+            <p className="text-xs font-medium uppercase tracking-widest text-slate-600">
               Connect
             </p>
-            <SocialLinks align="left" color="text-slate-400" size="text-xl" gap="gap-4" />
+            <SocialLinks align="right" color="text-slate-500" size="text-lg" gap="gap-4" />
             <a
-              href="mailto:raohanzala70@email.com"
-              className="text-sm text-slate-400 transition hover:text-white"
+              href={`mailto:${siteConfig.email}`}
+              className="text-sm text-slate-500 transition hover:text-white"
             >
-              raohanzala70@email.com
+              {siteConfig.email}
             </a>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-white/8 pt-6 text-xs text-slate-600 sm:flex-row">
           <p>
             © {year}{' '}
-            <span className="text-slate-300">Rao Hanzala</span>. All rights reserved.
+            <span className="text-slate-400">{siteConfig.fullName}</span>. All rights reserved.
           </p>
           <p>
             Built with{' '}
-            <span className="text-slate-300">Next.js</span> &{' '}
-            <span className="text-slate-300">Tailwind CSS</span>
+            <span className="text-slate-400">Next.js</span> &{' '}
+            <span className="text-slate-400">Tailwind CSS</span>
           </p>
         </div>
       </div>

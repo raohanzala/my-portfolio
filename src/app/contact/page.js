@@ -2,9 +2,10 @@ import SectionTitle from '@/components/SectionTitle';
 import ContactForm from '@/components/ContactForm';
 import SocialLinks from '@/components/SocialLinks';
 import MainPage from '@/components/MainPage';
+import { siteConfig } from '@/config/site';
 
 export const metadata = {
-  title: 'Contact | Hanzala',
+  title: `Contact | ${siteConfig.name}`,
   description: 'Let’s build something amazing together.',
 };
 
